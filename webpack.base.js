@@ -5,6 +5,7 @@ const { VueLoaderPlugin } = require('vue-loader')
 module.exports = {
   entry: './src/main.ts',
   output: {
+    filename: 'static/js/[name].[chunkhash:6].js',
     path: resolve(__dirname, 'dist'),
     clean: true
   },
@@ -27,15 +28,11 @@ module.exports = {
         }
       },
       {
-        test: /\.css(\?.*)?$/,
-
-      },
-      {
         test: /\.(png|jpe?g|gif|svg|webp)(\?.*)?$/,
         dependency: { not: ['url'] },
         type: 'asset/resource',
         generator: {
-          filename: 'static/images/[name][hash][ext][query]'
+          filename: 'static/images/[name][contenthash:6][ext][query]'
         }
       },
       {
@@ -43,7 +40,7 @@ module.exports = {
         dependency: { not: ['url'] },
         type: 'asset/resource',
         generator: {
-          filename: 'static/media/[name][hash][ext][query]'
+          filename: 'static/media/[name][contenthash:6][ext][query]'
         }
       },
       {
@@ -51,7 +48,7 @@ module.exports = {
         dependency: { not: ['url'] },
         type: 'asset/resource',
         generator: {
-          filename: 'static/files/[name][hash][ext][query]'
+          filename: 'static/files/[name][contenthash:6][ext][query]'
         }
       },
       {
@@ -59,7 +56,7 @@ module.exports = {
         dependency: { not: ['url'] },
         type: 'asset/resource',
         generator: {
-          filename: 'static/fonts/[name][hash][ext][query]'
+          filename: 'static/fonts/[name][contenthash:6][ext][query]'
         }
       }
     ]

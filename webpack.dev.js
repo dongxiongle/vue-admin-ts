@@ -5,6 +5,18 @@ const config = require('./webpack.base');
 
 const devConfig = {
   mode: 'development',
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          'postcss-loader'
+        ]
+      }
+    ]
+  },
   devServer: {
     port: 8090,
     open: true,

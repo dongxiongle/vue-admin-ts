@@ -11,9 +11,21 @@ const prodConfig = {
       config: [__filename]
     }
   },
+  module: {
+    rules: [
+      {
+        test: /\.css(\?.*)?$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader'
+        ]
+      }
+    ]
+  },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "css/[name].[contenthash].css",
+      filename: "static/css/[name].[contenthash:6].css",
     }),
     new DefinePlugin({
       APIURL: JSON.stringify('https://www.baidu.com')
